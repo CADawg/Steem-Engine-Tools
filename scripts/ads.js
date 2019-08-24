@@ -1,0 +1,1 @@
+document.getElementById("brave-fix").style.display = "block";
