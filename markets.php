@@ -51,7 +51,7 @@ $_STEEM_ENGINE = new SteemEngine();
 
                 <div class="col">
                     <h4>Market Buys</h4>
-                    <table id="buysTable" class="table table-striped">
+                    <table id="buysTable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>Price</th>
@@ -87,6 +87,17 @@ $_STEEM_ENGINE = new SteemEngine();
                         ?>
                         </tbody>
 
+                        <tfoot>
+                        <tr>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Token</th>
+                            <th>Account</th>
+                            <th>STEEM</th>
+                            <th>Total STEEM</th>
+                        </tr>
+                        </tfoot>
+
                     </table>
 
                 </div>
@@ -94,7 +105,7 @@ $_STEEM_ENGINE = new SteemEngine();
                 <div class="col">
                     <h4>Market Sells</h4>
 
-                    <table id="sellsTable" class="table table-striped">
+                    <table id="sellsTable" class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>Price</th>
@@ -130,6 +141,17 @@ $_STEEM_ENGINE = new SteemEngine();
 
                         ?>
                         </tbody>
+
+                        <tfoot>
+                        <tr>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Token</th>
+                            <th>Account</th>
+                            <th>STEEM</th>
+                            <th>Total STEEM</th>
+                        </tr>
+                        </tfoot>
 
                     </table>
 

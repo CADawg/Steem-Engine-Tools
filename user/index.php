@@ -1,5 +1,9 @@
 <?php
 
+function get_rewards ($account = "null") {
+    return file_get_contents("http://scot-api.steem-engine.com/get_account_history?account=$account");
+}
+
 require_once "../libs/steemengine/SteemEngine.php";
 use SnaddyvitchDispenser\SteemEngine\SteemEngine;
 
@@ -26,23 +30,30 @@ function GetDomainName($url)
 }
 
 $loki = '$loki';
+
+require "steemuser.php";
+
+$user = [];
+
+preg_match('/@([A-z0-9\.\-]{3,16})/', $_SERVER["REQUEST_URI"], $user);
+
+if (isset($user[1])) {
+    $user_name = strtolower($user[1]);
+} else {
+    $user_name = "null";
+}
 ?>
 <!DOCTYPE HTML>
 <html>
     <head lang="en">
         <?php include "../additions/styles.php"; ?>
-        <title>Steem Engine Delegations Viewer</title>
-        <meta name="description" content="Easily view delegations of various Steem Engine tokens." >
+        <title>Profile of @<?php echo $user_name; ?></title>
+        <meta name="description" content="View your profile and see balances, market orders and rewards!" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <meta name="author" content="@CADawg">
         <link href="user_profile.css" rel="stylesheet" type="text/css" />
         <?php include "../header.php"; ?>
-        <style>
-            [id*=_wrapper].dataTables_wrapper {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
 
     <body>
@@ -50,18 +61,6 @@ $loki = '$loki';
         <div class="card flex-row flex-wrap p-3 m-3">
             <div class="card-head">
                 <?php
-                require "steemuser.php";
-
-                $user = [];
-
-                preg_match('/@([A-z0-9\.\-]{3,16})/', $_SERVER["REQUEST_URI"], $user);
-
-                if (isset($user[1])) {
-                    $user_name = $user[1];
-                } else {
-                    $user_name = "null";
-                }
-
                 $user_profile = get_steem_profile($user_name);
                 //$user_profile = json_decode(file_get_contents("cadawg.json"));
                 if (is_object($user_profile) and $user_profile->user != "No account found" and $user_profile->user != "User Profiles unavailable. Try again in a few minutes!" and isset($user_profile->user->owner)) {
@@ -100,6 +99,12 @@ $loki = '$loki';
                         echo('<p class="badge user-badge badge-info"><i class="fas fa-dollar-sign"></i> Early Donor</p>');
                     } elseif (in_array($user_name, ["gerber", "mermaidvampire"])) {
                         echo('<p class="badge user-badge badge-success"><i class="fas fa-users"></i> Supporter</p>');
+                    } elseif ($user_name == "surpassinggoogle") {
+                        echo('<p class="badge user-badge badge-warning"><i class="fas fa-level-up-alt"></i> Google Surpassing Lvl. 100</p>');
+                    } elseif ($user_name == "definethedollar") {
+                        echo('<p class="badge user-badge badge-warning"><i class="fas fa-fish"></i> <em>Ugh. Herrings.</em></p>');
+                    } elseif ($user_name == "khaleelkazi") {
+                        echo('<p class="badge user-badge badge-warning"><i class="fas fa-user"></i> I guess he\'s okay-ish!</p>');
                     } ?>
             </div>
         </div>
@@ -142,7 +147,32 @@ $loki = '$loki';
                         $token_info[$token->symbol] = [$token->name, $icon];
                     }
 
+                    $sell_rows = "";
+                    $total_sells = 0;
+
                     foreach ($market_sells as $sell) {
+                        $amt = round($sell->quantity * $sell->price, 8);
+                        $total_sells += $amt;
+                        $sell_rows .= "<tr>";
+                        $metadata = $token_info[$sell->symbol];
+                        if ($metadata[1] != "") {
+                            $sell_rows .= "<td><img style='width: 40px; height: 40px;' src='$metadata[1]' alt='Logo of $metadata[0]'></td></td>";
+                        } else {
+                            $sell_rows .= "<td></td>";
+                        }
+
+                        $sell_rows .= "<td>$metadata[0]</td>";
+
+                        $sell_rows .= "<td>$sell->quantity</td>";
+                        $sell_rows .= "<td>$sell->symbol</td>";
+                        $sell_rows .= "<td><strong>$sell->price</strong></td>";
+                        $sell_rows .= "<td>$amt</td>";
+                        $sell_rows .= "<td>$total_sells</td>";
+
+
+
+                        $sell_rows .= "</tr>";
+
                         if (isset($market_balances[$sell->symbol])) {
                             $market_balances[$sell->symbol] += $sell->quantity;
                         } else {
@@ -150,7 +180,32 @@ $loki = '$loki';
                         }
                     }
 
+                    $buy_rows  = "";
+                    $total_buys = 0.0;
+
                     foreach ($market_buys as $buy) {
+                        $amt = round((float)$buy->tokensLocked, 8);
+                        $total_buys += $amt;
+                        $buy_rows .= "<tr>";
+                        $metadata = $token_info[$buy->symbol];
+                        if ($metadata[1] != "") {
+                            $buy_rows .= "<td><img style='width: 40px; height: 40px;' src='$metadata[1]' alt='Logo of $metadata[0]'></td></td>";
+                        } else {
+                            $buy_rows .= "<td></td>";
+                        }
+
+                        $buy_rows .= "<td>$metadata[0]</td>";
+
+                        $buy_rows .= "<td>$buy->quantity</td>";
+                        $buy_rows .= "<td>$buy->symbol</td>";
+                        $buy_rows .= "<td><strong>$buy->price</strong></td>";
+                        $buy_rows .= "<td>$amt</td>";
+                        $buy_rows .= "<td>$total_buys</td>";
+
+
+
+                        $buy_rows .= "</tr>";
+
                         if (isset($market_balances["STEEMP"])) {
                             $market_balances["STEEMP"] += $buy->tokensLocked;
                         } else {
@@ -275,10 +330,135 @@ $loki = '$loki';
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-market" role="tabpanel" aria-labelledby="nav-market-tab">
-                                ...
+                                <div class="container">
+                                    <h4>Buys</h4>
+                                    <table id="buys" class="datatable table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Token Name</th>
+                                            <th>Quantity</th>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>STEEM</th>
+                                            <th>Total STEEM</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php echo $buy_rows; ?>
+                                        </tbody>
+
+                                        <tfoot>
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Token Name</th>
+                                            <th>Quantity</th>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>STEEM</th>
+                                            <th>Total STEEM</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <h4>Sells</h4>
+                                    <table id="sells" class="datatable table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Token Name</th>
+                                            <th>Quantity</th>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>STEEM</th>
+                                            <th>Total STEEM</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php echo $sell_rows; ?>
+                                        </tbody>
+
+                                        <tfoot>
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Token Name</th>
+                                            <th>Quantity</th>
+                                            <th>Symbol</th>
+                                            <th>Price</th>
+                                            <th>STEEM</th>
+                                            <th>Total STEEM</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-rewards" role="tabpanel"
-                                 aria-labelledby="nav-rewards-tab">...
+                                 aria-labelledby="nav-rewards-tab">
+                                <?php $rewards = json_decode(get_rewards($user_name));
+                                    $reward_rows = "";
+                                    require_once "../libs/time_string.php";
+                                    foreach ($rewards as $reward) {
+                                        switch ($reward->type) {
+                                            case "mining_reward":
+                                                $time_str = epoch_to_time(strtotime($reward->timestamp), false, false);
+                                                $reward_rows .= "<tr><td>Mining</td><td>" . ((float)$reward->int_amount / (10 ** $reward->precision)) . "</td><td>$reward->token</td><td>TX: $reward->trx</td><td data-order='$reward->timestamp'><abbr data-toggle='tooltip' title='$reward->timestamp'>$time_str</abbr></td></tr>";
+                                                break;
+
+                                            case "author_reward":
+                                                $time_str = epoch_to_time(strtotime($reward->timestamp), false, false);
+                                                $display_perm = strlen($reward->permlink) > 30 ? substr($reward->permlink,0,30) . "..." : $reward->permlink;
+                                                $reward_rows .= "<tr><td>Author</td><td>" . ((float)$reward->int_amount / (10 ** $reward->precision)) ."</td><td>$reward->token</td><td><a href='https://steempeak.com/@$reward->account/$reward->permlink' rel='nofollow'>@$reward->account/$display_perm</a></td><td data-order='$reward->timestamp'><abbr data-toggle='tooltip' title='$reward->timestamp'>$time_str</abbr></td></tr>";
+                                                break;
+
+                                            case "staking_reward":
+                                                $time_str = epoch_to_time(strtotime($reward->timestamp), false, false);
+                                                $reward_rows .= "<tr><td>Staking</td><td>" . ((float)$reward->int_amount / (10 ** $reward->precision)) ."</td><td>$reward->token</td><td>TX: $reward->trx</td><td data-order='$reward->timestamp'><abbr data-toggle='tooltip' title='$reward->timestamp'>$time_str</abbr></td></tr>";
+                                                break;
+
+                                            case "curation_reward":
+                                                $time_str = epoch_to_time(strtotime($reward->timestamp), false, false);
+                                                $display_perm = strlen($reward->permlink) > 30 ? substr($reward->permlink,0,30) . "..." : $reward->permlink;
+                                                $reward_rows .= "<tr><td>Curation</td><td>" . ((float)$reward->int_amount / (10 ** $reward->precision)) ."</td><td>$reward->token</td><td><a href='https://steempeak.com/@$reward->author/$reward->permlink' rel='nofollow'>@$reward->author/$display_perm</a></td><td data-order='$reward->timestamp'><abbr data-toggle='tooltip' title='$reward->timestamp'>$time_str</abbr></td></tr>";
+                                                break;
+
+                                            case "comment_benefactor_reward":
+                                                $time_str = epoch_to_time(strtotime($reward->timestamp), false, false);
+                                                $display_perm = strlen($reward->permlink) > 30 ? substr($reward->permlink,0,30) . "..." : $reward->permlink;
+                                                $reward_rows .= "<tr><td>Benefactor</td><td>" . ((float)$reward->int_amount / (10 ** $reward->precision)) ."</td><td>$reward->token</td><td><a href='https://steempeak.com/@$reward->author/$reward->permlink' rel='nofollow'>@$reward->author/$display_perm</a></td><td data-order='$reward->timestamp'><abbr data-toggle='tooltip' title='$reward->timestamp'>$time_str</abbr></td></tr>";
+                                                break;
+                                        }
+                                    }
+                                ?>
+                                <div class="container">
+                                    <h4>Rewards</h4>
+                                    <table id="rewards" class="datatable table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Symbol</th>
+                                            <th>Details</th>
+                                            <th>Time</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <?php echo $reward_rows; ?>
+                                        </tbody>
+
+                                        <tfoot>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Symbol</th>
+                                            <th>Details</th>
+                                            <th>Time</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -294,11 +474,13 @@ $loki = '$loki';
     <?php require "../additions/scripts.php"; ?>
     <script>
         $(document).ready(function() {
-            $('#balances').DataTable(
-                {
-                    "order": [[9, "desc"]]
-                }
-            );
+            $('#balances').DataTable({"order": [[9, "desc"]]});
+            $('#buys').DataTable({"order": [[6, "asc"]]});
+            $('#sells').DataTable({"order": [[6, "asc"]]});
+            $('#rewards').DataTable({"order": [[4, "desc"]]});
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         } );
     </script>
     </body>

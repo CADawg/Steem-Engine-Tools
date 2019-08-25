@@ -57,7 +57,7 @@ $_STEEM_ENGINE = new SteemEngine();
             <div id="undelegatingChart" class="col" style="height: 400px;"></div>
         </div>
 
-        <table id="delegatorTable" class="table table-striped">
+        <table id="delegatorTable" class="table table-striped table-bordered">
             <thead>
             <tr><th>Account</th><th>Amount</th><th>Symbol</th><th>Returned In</th></tr>
             </thead>
@@ -77,6 +77,9 @@ $_STEEM_ENGINE = new SteemEngine();
 
             ?>
             </tbody>
+            <tfoot>
+            <tr><th>Account</th><th>Amount</th><th>Symbol</th><th>Returned In</th></tr>
+            </tfoot>
         </table>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -112,12 +115,15 @@ $_STEEM_ENGINE = new SteemEngine();
     } else {
     ?>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered">
             <thead>
-            <tr><th>From</th><th>To</th><th>Amount</th><th>Symbol</th><th>Created*</th><th>Updated*</th></tr>
+            <tr><th>Account</th><th>Amount</th><th>Symbol</th><th>Returned In</th></tr>
             </thead>
             <tbody>
             </tbody>
+            <tfoot>
+            <tr><th>Account</th><th>Amount</th><th>Symbol</th><th>Returned In</th></tr>
+            </tfoot>
         </table>
 
         <?php

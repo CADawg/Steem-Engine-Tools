@@ -55,6 +55,9 @@ if (sizeof($url) > 3) {
             <li class="nav-item">
                 <a class="nav-link text-white" href="<?php echo $start; ?>privacy.php">Privacy</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="<?php echo $start; ?>pick_user.php">User Profiles</a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -15,7 +15,7 @@
  * @return false|string Result Text
  */
 
-function epoch_to_time($epoch = 0, $milli = true, $detailed = false) {
+function epoch_to_time($epoch = 0, $milli = false, $detailed = false) {
     if ($epoch == "") return "";
     if (!$detailed) {return time_difference_string($epoch, $milli);}
 
