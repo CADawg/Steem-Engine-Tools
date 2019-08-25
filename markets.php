@@ -1,3 +1,9 @@
+<?php
+require_once "libs/steemengine/SteemEngine.php";
+use SnaddyvitchDispenser\SteemEngine\SteemEngine;
+
+$_STEEM_ENGINE = new SteemEngine();
+?>
 <!DOCTYPE HTML>
 <html>
     <head lang="en">
@@ -40,11 +46,10 @@
             $_KNOWN_BOTS = ["ifoundthissong", "mancer-sm-alt"];
 
             /* Get Orders */
-            require "market_api.php";
-            $sells = market_sells($to, $symbol);
-            $buys = market_buys($to, $symbol);
+            $sells = $_STEEM_ENGINE->get_market_sells($to, $symbol);
+            $buys = $_STEEM_ENGINE->get_market_buys($to, $symbol);
 
-            if (isset($sells[0]->result) and !isset($sells->error) and isset($buys[0]->result) and !isset($buys->error)) {
+            if ($sells and $buys) {
             ?>
 
             <div class="row">
@@ -67,11 +72,11 @@
                         <?php
                         $total = 0.0;
 
-                        usort($buys[0]->result, function($a, $b) {
+                        usort($buys, function($a, $b) {
                             return $a->price > $b->price ? -1 : 1;
                         });
 
-                        foreach ($buys[0]->result as $market_buy) {
+                        foreach ($buys as $market_buy) {
                             $total += (float)$market_buy->tokensLocked;
                             $current_price = rtrim(sprintf("%.8f",(float)$market_buy->price), "0");
                             $bot = "";
@@ -107,11 +112,11 @@
                         <?php
                         $total = 0.0;
 
-                        usort($sells[0]->result, function($a, $b) {
+                        usort($sells, function($a, $b) {
                             return $a->price < $b->price ? -1 : 1;
                         });
 
-                        foreach ($sells[0]->result as $market_sell) {
+                        foreach ($sells as $market_sell) {
                             $amt = round($market_sell->quantity * $market_sell->price, 8);
                             $current_price = rtrim(sprintf("%.8f",(float)$market_sell->price),"0");
                             $total += (float)$amt;

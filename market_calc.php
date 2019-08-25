@@ -1,3 +1,9 @@
+<?php
+require_once "libs/steemengine/SteemEngine.php";
+use SnaddyvitchDispenser\SteemEngine\SteemEngine;
+
+$_STEEM_ENGINE = new SteemEngine();
+?>
 <!DOCTYPE HTML>
 <html>
 <head lang="en">
@@ -31,13 +37,11 @@
 
     <?php
     /* Parameters */
-    $to = "";
     $symbol = isset($_GET["symbol"]) ? strtoupper($_GET["symbol"]) : "";
 
     /* Get Orders */
-    require "market_api.php";
-    $sells = market_sells($to, $symbol);
-    $buys = market_buys($to, $symbol);
+    $sells = $_STEEM_ENGINE->get_market_sells("", $symbol);
+    $buys = $_STEEM_ENGINE->get_market_buys("", $symbol);
 
     if ($symbol != "") {
         ?>
@@ -246,24 +250,24 @@
         <?php
     }
 
-    if (isset($sells[0]->result) and !isset($sells->error) and isset($buys[0]->result) and !isset($buys->error)) {
-        usort($buys[0]->result, function($a, $b) {
+    if ($buys and $sells) {
+        usort($buys, function($a, $b) {
             return $a->price > $b->price ? -1 : 1;
         });
 
         $buys_json = [];
 
-        foreach ($buys[0]->result as $market_buy) {
+        foreach ($buys as $market_buy) {
             $buys_json[] = [(float)$market_buy->quantity, (float)$market_buy->price];
         }
 
-        usort($sells[0]->result, function($a, $b) {
+        usort($sells, function($a, $b) {
             return $a->price < $b->price ? -1 : 1;
         });
 
         $sells_json = [];
 
-        foreach ($sells[0]->result as $market_sell) {
+        foreach ($sells as $market_sell) {
             $sells_json[] = [(float)$market_sell->quantity, (float)$market_sell->price];
         }
 

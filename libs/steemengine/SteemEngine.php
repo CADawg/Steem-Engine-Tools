@@ -8,6 +8,8 @@
 
 namespace SnaddyvitchDispenser\SteemEngine;
 
+require "SteemEngineAPI.php";
+
 class SteemEngine
 {
     /**
@@ -39,9 +41,11 @@ class SteemEngine
      */
     function get_market_sells($user = "null", $token = "") {
         $query = [];
-        $query["account"] = strtolower($user);
+        if (strlen($user) > 0) {
+            $query["account"] = strtolower($user);
+        }
         if (strlen($token) > 0) {
-            $query["token"] = strtoupper($token);
+            $query["symbol"] = strtoupper($token);
         }
 
         return $this->SteemEngineAPI->query_contract("market/sellBook", $query);
@@ -55,9 +59,11 @@ class SteemEngine
      */
     function get_market_buys($user = "null", $token = "") {
         $query = [];
-        $query["account"] = strtolower($user);
+        if (strlen($user) > 0) {
+            $query["account"] = strtolower($user);
+        }
         if (strlen($token) > 0) {
-            $query["token"] = strtoupper($token);
+            $query["symbol"] = strtoupper($token);
         }
 
         return $this->SteemEngineAPI->query_contract("market/buyBook", $query);

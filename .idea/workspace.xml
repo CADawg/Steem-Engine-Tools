@@ -7,7 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="46264b67-9f1c-484c-a22b-775011c87a2a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/libs/time_string.php" afterPath="$PROJECT_DIR$/libs/time_string.php" />
+      <change beforePath="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" afterPath="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
+      <change beforePath="$PROJECT_DIR$/market_api.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/market_calc.php" afterPath="$PROJECT_DIR$/market_calc.php" />
+      <change beforePath="$PROJECT_DIR$/markets.php" afterPath="$PROJECT_DIR$/markets.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,10 +33,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="market_calc.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/market_calc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="navagation.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/navagation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
+            <state relative-caret-position="204">
               <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
               <folding />
             </state>
@@ -43,8 +56,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="255" column="47" lean-forward="true" selection-start-line="228" selection-start-column="49" selection-end-line="255" selection-end-column="47" />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="49" />
               <folding>
                 <marker date="1566683412816" expanded="true" signature="7588:7593" ph="..." />
                 <marker date="1566683412816" expanded="true" signature="7588:7614" ph="..." />
@@ -53,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time_string.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="time_string.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/time_string.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+            <state relative-caret-position="782">
+              <caret line="72" column="1" lean-forward="true" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -66,8 +79,8 @@
       <file leaf-file-name="SteemEngine.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+            <state relative-caret-position="731">
+              <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
               </folding>
@@ -78,8 +91,8 @@
       <file leaf-file-name="SteemEngineAPI.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="36" />
+            <state relative-caret-position="382">
+              <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
               </folding>
@@ -87,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="market_api.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/market_api.php">
+      <file leaf-file-name="markets.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/markets.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -100,8 +113,8 @@
       <file leaf-file-name="delegations.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/delegations.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="119" column="393" lean-forward="false" selection-start-line="119" selection-start-column="393" selection-end-line="119" selection-end-column="393" />
+            <state relative-caret-position="4">
+              <caret line="101" column="308" lean-forward="true" selection-start-line="101" selection-start-column="308" selection-end-line="101" selection-end-column="308" />
               <folding />
             </state>
           </provider>
@@ -110,18 +123,8 @@
       <file leaf-file-name="undelegations.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/undelegations.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
+            <state relative-caret-position="310">
               <caret line="72" column="250" lean-forward="false" selection-start-line="72" selection-start-column="237" selection-end-line="72" selection-end-column="250" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="markets.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/markets.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="113" column="69" lean-forward="true" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -156,8 +159,9 @@
       <find>analy10</find>
       <find>&quot;</find>
       <find>\</find>
-      <find>epoch_to_time</find>
       <find>epoch_</find>
+      <find>epoch_to_time</find>
+      <find>buys</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -177,7 +181,6 @@
       <list>
         <option value="$PROJECT_DIR$/constants.php" />
         <option value="$PROJECT_DIR$/undelegation_api.php" />
-        <option value="$PROJECT_DIR$/market_api.php" />
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/donations.php" />
         <option value="$PROJECT_DIR$/user/.htaccess" />
@@ -191,8 +194,6 @@
         <option value="$PROJECT_DIR$/ad.php" />
         <option value="$PROJECT_DIR$/ad_endofpage.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/market_calc.php" />
-        <option value="$PROJECT_DIR$/markets.php" />
         <option value="$PROJECT_DIR$/additions/scripts.php" />
         <option value="$PROJECT_DIR$/additions/styles.php" />
         <option value="$PROJECT_DIR$/user/user_profile.css" />
@@ -202,10 +203,13 @@
         <option value="$PROJECT_DIR$/user/index.php" />
         <option value="$PROJECT_DIR$/navagation.php" />
         <option value="$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php" />
-        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
         <option value="$PROJECT_DIR$/undelegations.php" />
         <option value="$PROJECT_DIR$/delegations.php" />
         <option value="$PROJECT_DIR$/libs/time_string.php" />
+        <option value="$PROJECT_DIR$/market_api.php" />
+        <option value="$PROJECT_DIR$/markets.php" />
+        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
+        <option value="$PROJECT_DIR$/market_calc.php" />
       </list>
     </option>
   </component>
@@ -351,7 +355,7 @@
       <workItem from="1566569882484" duration="3503000" />
       <workItem from="1566573494981" duration="7276000" />
       <workItem from="1566646657020" duration="22224000" />
-      <workItem from="1566728597933" duration="3169000" />
+      <workItem from="1566728597933" duration="6181000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor Time_string to solve #1">
       <created>1566729130951</created>
@@ -381,11 +385,18 @@
       <option name="project" value="LOCAL" />
       <updated>1566731549521</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Simplify time_string">
+      <created>1566731800012</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566731800012</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142109000" />
+    <option name="totallyTimeSpent" value="145121000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -445,7 +456,8 @@
     <MESSAGE value="Remove unnecessary function parameters" />
     <MESSAGE value="Clean up SteemEngine library functions to remove dead code" />
     <MESSAGE value="Change options array to improve readability" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change options array to improve readability" />
+    <MESSAGE value="Simplify time_string" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplify time_string" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -707,33 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="255" column="47" lean-forward="true" selection-start-line="228" selection-start-column="49" selection-end-line="255" selection-end-column="47" />
-          <folding>
-            <marker date="1566683412816" expanded="true" signature="7588:7593" ph="..." />
-            <marker date="1566683412816" expanded="true" signature="7588:7614" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/market_calc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="32" column="20" lean-forward="true" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/markets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="113" column="69" lean-forward="true" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/delegation_api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -742,62 +727,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="36" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/undelegations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="72" column="250" lean-forward="false" selection-start-line="72" selection-start-column="237" selection-end-line="72" selection-end-column="250" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/navagation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/market_api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/delegations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="119" column="393" lean-forward="false" selection-start-line="119" selection-start-column="393" selection-end-line="119" selection-end-column="393" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/time_string.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+        <state relative-caret-position="782">
+          <caret line="72" column="1" lean-forward="true" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="49" />
+          <folding>
+            <marker date="1566683412816" expanded="true" signature="7588:7593" ph="..." />
+            <marker date="1566683412816" expanded="true" signature="7588:7614" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/navagation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delegations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="101" column="308" lean-forward="true" selection-start-line="101" selection-start-column="308" selection-end-line="101" selection-end-column="308" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/undelegations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="72" column="250" lean-forward="false" selection-start-line="72" selection-start-column="237" selection-end-line="72" selection-end-column="250" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="40" column="47" lean-forward="true" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="64" column="33" lean-forward="true" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/market_calc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
