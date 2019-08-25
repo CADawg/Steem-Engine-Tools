@@ -15,11 +15,7 @@
  * @return false|string Result Text
  */
 
-function epoch_to_time($epoch, $milli = true, $detailed = false) {
-    if ($epoch == "") {
-        return "";
-    }
-
+function epoch_to_time($epoch = 0, $milli = true, $detailed = false) {
     if (!$detailed) {return time_difference_string($epoch, $milli);}
 
     try {
@@ -41,14 +37,8 @@ function epoch_to_time($epoch, $milli = true, $detailed = false) {
  * @return string Time Difference Specified as till/ago
  */
 function time_difference_string($datetime, $milli = true) {
-    if ($milli) {
-        $datetime = $datetime / 1000;
-    }
-
-    $future = false;
-    if ($datetime > time()) {
-        $future = true;
-    }
+    $datetime = $datetime / ($milli ? 1000 : 1);
+    $future = $datetime > time();
 
     $now = new DateTime;
     $ago = new DateTime("@$datetime");
