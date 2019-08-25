@@ -14,11 +14,6 @@ $_STEEM_ENGINE = new SteemEngine();
         <meta charset="UTF-8">
         <meta name="author" content="@CADawg">
         <?php include "header.php"; ?>
-        <style>
-            [id*=_wrapper].dataTables_wrapper {
-                margin: 20px 0;
-            }
-        </style>
     </head>
 
     <body>
@@ -72,6 +67,9 @@ $_STEEM_ENGINE = new SteemEngine();
                         <?php
                         $total = 0.0;
 
+                        /**
+                         * @var array $buys Object of buy orders
+                         */
                         usort($buys, function($a, $b) {
                             return $a->price > $b->price ? -1 : 1;
                         });
@@ -112,6 +110,9 @@ $_STEEM_ENGINE = new SteemEngine();
                         <?php
                         $total = 0.0;
 
+                        /**
+                         * @var array $sells Object of sell orders
+                         */
                         usort($sells, function($a, $b) {
                             return $a->price < $b->price ? -1 : 1;
                         });
@@ -157,7 +158,7 @@ $_STEEM_ENGINE = new SteemEngine();
         $("#amount_sell").on("keyup",function(){
             var sellprice = getSellPrice($("#amount_sell").val());
 
-            if (typeof(sellprice) ==  "string") {
+            if (typeof(sellprice) ===  "string") {
                 $("#amount_sell_steem").val(sellprice);
                 $("#amount_sell_average").val(sellprice);
                 $("#sell_price").val(sellprice);
@@ -171,7 +172,7 @@ $_STEEM_ENGINE = new SteemEngine();
         $("#amount_buy").on("keyup",function(){
             var buyprice = getBuyPrice($("#amount_buy").val());
 
-            if (typeof(buyprice) ==  "string") {
+            if (typeof(buyprice) ===  "string") {
                 $("#amount_steem").val(buyprice);
                 $("#amount_average").val(buyprice);
                 $("#buy_price").val(buyprice);

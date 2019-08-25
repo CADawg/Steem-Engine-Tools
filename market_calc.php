@@ -13,11 +13,6 @@ $_STEEM_ENGINE = new SteemEngine();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta name="author" content="@CADawg">
-    <style>
-        [id*=_wrapper].dataTables_wrapper {
-            margin: 20px 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -179,7 +174,7 @@ $_STEEM_ENGINE = new SteemEngine();
         <script>
             function getSellPrice(amt) {
                 var steemAmt = 0.0;
-                var oldAmt = amt;
+                var oldAmt = 0+amt;
                 for (var i = 0, len = window.buys.length; i < len; i++) {
                     if (amt <= window.buys[i][0]) {
                         steemAmt += (amt * window.buys[i][1]);
@@ -195,7 +190,7 @@ $_STEEM_ENGINE = new SteemEngine();
 
             function getBuyPrice(amt) {
                 var steemAmt = 0.0;
-                var oldAmt = amt;
+                var oldAmt = 0+amt;
                 for (var i = 0, len = window.sells.length; i < len; i++) {
                     if (amt <= window.sells[i][0]) {
                         steemAmt += (amt * window.sells[i][1]);
@@ -220,7 +215,7 @@ $_STEEM_ENGINE = new SteemEngine();
                         return [tokensNeeded, lowPrice];
                     }
                 }
-                if (target != 0) {
+                if (target !== "0") {
                     return ["Target Too High!", "Target Too High!"];
                 } else {
                     return [tokensNeeded, lowPrice];
@@ -251,6 +246,10 @@ $_STEEM_ENGINE = new SteemEngine();
     }
 
     if ($buys and $sells) {
+        /**
+         * @var array $buys Array of buy orders
+         * @var array $sells Array of sell orders
+         */
         usort($buys, function($a, $b) {
             return $a->price > $b->price ? -1 : 1;
         });
@@ -323,19 +322,23 @@ $_STEEM_ENGINE = new SteemEngine();
         }
     });
 
-    $("#lower_target_price").on("keyup",function(){
-        var lowerprice = targetBuyPrice($("#lower_target_price").val());
+    var ltp = $("#lower_target_price");
+    ltp.on("keyup",function(){
+        var lowerprice = targetBuyPrice(ltp.val());
         $("#lower_tokens_required").val(lowerprice[0]);
-        $("#amount_sell").val(lowerprice[0]);
-        $("#amount_sell").trigger("keyup");
+        var jqs = $("#amount_sell");
+        jqs.val(lowerprice[0]);
+        jqs.trigger("keyup");
         $("#lower_sell_price").val(lowerprice[1]);
     });
 
-    $("#raise_target_price").on("keyup",function(){
-        var raiseprice = targetSellPrice($("#raise_target_price").val());
+    var rtp = $("#raise_target_price");
+    rtp.on("keyup",function(){
+        var raiseprice = targetSellPrice(rtp.val());
         $("#raise_steem_required").val(raiseprice[0]);
-        $("#amount_buy").val(raiseprice[0]);
-        $("#amount_buy").trigger("keyup");
+        var jqb = $("#amount_buy");
+        jqb.val(raiseprice[0]);
+        jqb.trigger("keyup");
         $("#raise_buy_price").val(raiseprice[1]);
     });
 </script>

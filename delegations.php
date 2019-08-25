@@ -18,11 +18,6 @@ $_STEEM_ENGINE = new SteemEngine();
         <meta charset="UTF-8">
         <meta name="author" content="@CADawg">
         <?php include "header.php"; ?>
-        <style>
-            [id*=_wrapper].dataTables_wrapper {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
 
     <body>
@@ -137,7 +132,7 @@ $_STEEM_ENGINE = new SteemEngine();
 
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <script>
-                    google.charts.load('current', {'packages':['corechart']});
+                      google.charts.load('current', {'packages':['corechart']});
                       google.charts.setOnLoadCallback(drawChart);
 
                       function drawChart() {
