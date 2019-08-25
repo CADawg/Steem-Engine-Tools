@@ -16,6 +16,7 @@
  */
 
 function epoch_to_time($epoch = 0, $milli = true, $detailed = false) {
+    if ($epoch == "") return "";
     if (!$detailed) {return time_difference_string($epoch, $milli);}
 
     try {

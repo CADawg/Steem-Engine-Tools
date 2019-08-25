@@ -1,5 +1,10 @@
 <?php
 require "libs/time_string.php";
+
+require_once "libs/steemengine/SteemEngine.php";
+use SnaddyvitchDispenser\SteemEngine\SteemEngine;
+
+$_STEEM_ENGINE = new SteemEngine();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -44,12 +49,9 @@ require "libs/time_string.php";
     $symbol = isset($_GET["symbol"]) ? $_GET["symbol"] : "";
 
     /* Get Delegations */
-    require "undelegation_api.php";
-    $contents = undelegation_api($account, $symbol);
+    $undelegations = $_STEEM_ENGINE->get_undelegations($account, $symbol);
 
-    /* Decode */
-    $json = json_decode($contents);
-    if (isset($json[0]->result) and !isset($json->error)) {
+    if ($undelegations !== false) {
         ?>
         <div class="row">
             <div id="undelegatingChart" class="col" style="height: 400px;"></div>
@@ -63,10 +65,10 @@ require "libs/time_string.php";
             <?php
             $token_delegators = [];
             $total = 0.0;
-            foreach ($json[0]->result as $delegation) {
+            foreach ($undelegations as $delegation) {
                 $total += (float)$delegation->quantity;
             }
-            foreach ($json[0]->result as $delegation) {
+            foreach ($undelegations as $delegation) {
                 $returned_safe = isset($delegation->completeTimestamp) ? $delegation->completeTimestamp : "";
 
                 $token_delegators[$delegation->txID] = [(float)$delegation->quantity, $delegation->symbol, $delegation->account];

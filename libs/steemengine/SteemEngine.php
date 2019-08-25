@@ -77,6 +77,47 @@ class SteemEngine
         return $this->SteemEngineAPI->query_contract("tokens/tokens", []);
     }
 
+    /**
+     * @param $user string Username to search
+     * @param $token string Token Symbol
+     * @return bool|object Result
+     */
+    function get_undelegations($user = "", $token = "") {
+        $query = [];
+        if (strlen($user) > 0) {
+            $query["account"] = strtolower($user);
+        }
+        if (strlen($token) > 0) {
+            $query["symbol"] = strtoupper($token);
+        }
+
+        return $this->SteemEngineAPI->query_contract("tokens/pendingUndelegations", $query);
+    }
+
+    /**
+     * @param array $query Query to use
+     * @return bool|object Result
+     */
+    function get_delegations($query = []) {
+        $finalQuery = [];
+
+        foreach ($query as $item=>$value) {
+            if (strlen($value) > 0) {
+                $finalQuery[$item] = $value;
+            }
+        }
+
+        return $this->SteemEngineAPI->query_contract("tokens/delegations", $finalQuery);
+    }
+
+    /**
+     * @param string $user Username
+     * @param string $token Token
+     * @return bool|object Result
+     */
+    function get_user_balance_one($user = "NULL", $token="PAL") {
+        return $this->SteemEngineAPI->query_contract("tokens/balances", ["account" => $user, "symbol" => $token]);
+    }
 
 
 }

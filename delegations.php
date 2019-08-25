@@ -2,6 +2,11 @@
 require "libs/time_string.php";
 
 $loki = '$loki';
+
+require_once "libs/steemengine/SteemEngine.php";
+use SnaddyvitchDispenser\SteemEngine\SteemEngine;
+
+$_STEEM_ENGINE = new SteemEngine();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -57,19 +62,22 @@ $loki = '$loki';
             $from = isset($_GET["from"]) ? strtolower($_GET["from"]) : "";
             $symbol = isset($_GET["symbol"]) ? $_GET["symbol"] : "";
 
-            /* Get Delegations */
-            require "delegation_api.php";
-            $contents = delegation_api($to, $from, $symbol);
+            $query = ["to" => $to, "from" => $from, "symbol" =>$symbol];
 
-            if ($own_sp) {
-                $self_power = self_power($to, $symbol);
+            $delegations = $_STEEM_ENGINE->get_delegations($query);
+
+            if ($own_sp and strlen($to) > 0 and strlen($symbol) > 0) {
+                $balance = $_STEEM_ENGINE->get_user_balance_one($to, $symbol);
+                if (isset($balance[0]->stake)) {
+                    $self_power = $balance[0]->stake;
+                } else {
+                    $self_power = false;
+                }
             } else {
                 $self_power = false;
             }
 
-            /* Decode */
-            $json = json_decode($contents);
-            if (isset($json[0]->result) and !isset($json->error)) {
+            if ($delegations !== false) {
                 ?>
                 <div class="row">
                     <?php
@@ -93,17 +101,17 @@ $loki = '$loki';
                 $token_delegators = [];
                 $total = 0.0;
 
-                foreach ($json[0]->result as $delegation) {
+                foreach ($delegations as $delegation) {
                     $total += (float)$delegation->quantity;
                 }
 
                 if ($self_power !== false) {
                     $total += $self_power;
                     print("<tr><td><strong>OWN POWER</strong></td><td>$to</td><td>" . (float)$self_power . "</td><td>" . strtoupper($symbol) . "</td><td data-order='1000000000000000'></td><td data-order='1000000000000000'></td><td>" . (string)round(((float)$self_power/(float)$total)*100,2) . "%</td></tr>");
-                    $token_delegators["OWN POWER,own_power"] = [(float)$delegation->quantity, $delegation->symbol];
+                    $token_delegators["OWN POWER,own_power"] = [(float)$self_power, $symbol];
                 }
 
-                foreach ($json[0]->result as $delegation) {
+                foreach ($delegations as $delegation) {
                     $updated_safe = isset($delegation->updated) ? $delegation->updated : "";
                     $created_safe = isset($delegation->created) ? $delegation->created : "";
                     if ((int)$updated_safe === (int)$created_safe) {
