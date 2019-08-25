@@ -12,9 +12,9 @@ function epoch_to_time($epoch, $milli=true, $detailed=false, $future = false) {
     }
     if (!$detailed) {
         if ($future) {
-            return time_till_string($epoch, $milli);
+            return time_difference_string($epoch, $milli);
         } else {
-            return time_elapsed_string($epoch, $milli);
+            return time_difference_string($epoch, $milli);
         }
     }
 
@@ -30,9 +30,14 @@ function epoch_to_time($epoch, $milli=true, $detailed=false, $future = false) {
     }
 }
 
-function time_elapsed_string($datetime, $milli = true,$full = false) {
+function time_difference_string($datetime, $milli = true,$full = false) {
     if ($milli) {
         $datetime = $datetime / 1000;
+    }
+
+    $future = false;
+    if ($datetime > time()) {
+        $future = true;
     }
 
     $now = new DateTime;
@@ -60,38 +65,9 @@ function time_elapsed_string($datetime, $milli = true,$full = false) {
     }
 
     if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-
-function time_till_string($datetime, $milli = true,$full = false) {
-    if ($milli) {
-        $datetime = $datetime / 1000;
+    if ($future) {
+        return $string ? "in " . implode(', ', $string) : 'just now';
+    } else {
+        return $string ? implode(', ', $string) . " ago" : 'just now';
     }
-
-    $now = new DateTime;
-    $ago = new DateTime("@$datetime");
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? "in " . implode(', ', $string) : 'just now';
 }
