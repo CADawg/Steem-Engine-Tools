@@ -8,9 +8,6 @@
 
 namespace SnaddyvitchDispenser\SteemEngine;
 
-require_once "SteemEngineAPI.php";
-use SnaddyvitchDispenser\SteemEngine\SteemEngineAPI;
-
 class SteemEngine
 {
     /**
@@ -31,9 +28,15 @@ class SteemEngine
      * @return bool|object Result
      */
     function get_user_balances($user = "null") {
-        return $this->SteemEngineAPI->query_contract("tokens", "balances", [ "account" => $user ]);
+        return $this->SteemEngineAPI->query_contract(["tokens", "balances"], [ "account" => $user ]);
     }
 
+    /**
+     * Get all market sells
+     * @param string $user User to limit on
+     * @param string $token Token to limit on
+     * @return bool|object Result
+     */
     function get_market_sells($user = "null", $token = "") {
         $query = [];
         $query["account"] = strtolower($user);
@@ -41,9 +44,15 @@ class SteemEngine
             $query["token"] = strtoupper($token);
         }
 
-        return $this->SteemEngineAPI->query_contract("market", "sellBook", $query);
+        return $this->SteemEngineAPI->query_contract(["market", "sellBook"], $query);
     }
 
+    /**
+     * Get all market buys
+     * @param string $user User to limit on
+     * @param string $token Token to limit on
+     * @return bool|object Result
+     */
     function get_market_buys($user = "null", $token = "") {
         $query = [];
         $query["account"] = strtolower($user);
@@ -51,13 +60,15 @@ class SteemEngine
             $query["token"] = strtoupper($token);
         }
 
-        return $this->SteemEngineAPI->query_contract("market", "buyBook", $query);
+        return $this->SteemEngineAPI->query_contract(["market", "buyBook"], $query);
     }
 
+    /**
+     * Get all tokens and associated metadata
+     * @return bool|object Tokens in existence
+     */
     function get_tokens() {
-        $query = [];
-
-        return $this->SteemEngineAPI->query_contract("tokens", "tokens", $query);
+        return $this->SteemEngineAPI->query_contract(["tokens", "tokens"], []);
     }
 
 

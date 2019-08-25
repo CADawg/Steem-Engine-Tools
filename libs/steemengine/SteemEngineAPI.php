@@ -21,16 +21,18 @@ class SteemEngineAPI
 
     /**
      * Query a Contract on the Steem Engine network
-     * @param string $contract Name of the contract to read
-     * @param string $table Table to query
+     * @param array $location Contract,Table array
      * @param array $query Query for table as array
-     * @param int $limit Limit of Results (Max 1000)
-     * @param int $offset Offset from 0
+     * @param array $modifiers Limit and offset
      * @return bool|object
      */
 
-    function query_contract($contract = "tokens", $table="balances", $query = [], $limit = 1000, $offset = 0) {
+    function query_contract($location = ["tokens", "balances"], $query = [], $modifiers = [1000, 0]) {
         try {
+            if (sizeof($modifiers) < 2 or sizeof($location) < 2) {
+                return false;
+            }
+
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -41,7 +43,7 @@ class SteemEngineAPI
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => json_encode([["method" => "find", "jsonrpc" => "2.0", "params" => ["contract" =>  $contract, "table" =>  $table, "query" => $query, "limit" => $limit, "offset " => $offset, "indexes" => []],  "id" => 1]]),
+                CURLOPT_POSTFIELDS => json_encode([["method" => "find", "jsonrpc" => "2.0", "params" => ["contract" =>  $location[0], "table" =>  $location[1], "query" => $query, "limit" => $modifiers[0], "offset " => $modifiers[1], "indexes" => []],  "id" => 1]]),
                 CURLOPT_HTTPHEADER => array(
                     "Cache-Control: no-cache",
                     "Content-Type: application/json",

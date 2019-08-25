@@ -70,7 +70,7 @@ require "libs/time_string.php";
                 $returned_safe = isset($delegation->completeTimestamp) ? $delegation->completeTimestamp : "";
 
                 $token_delegators[$delegation->txID] = [(float)$delegation->quantity, $delegation->symbol, $delegation->account];
-                print("<tr><td>$delegation->account</td><td>" . (float)$delegation->quantity . "</td><td>" . $delegation->symbol . "</td><td data-order='$returned_safe'><abbr title='" . epoch_to_time($returned_safe, true, true, true) . "'>" . epoch_to_time($returned_safe,true,false,true) . "</abbr></td></tr>");
+                print("<tr><td>$delegation->account</td><td>" . (float)$delegation->quantity . "</td><td>" . $delegation->symbol . "</td><td data-order='$returned_safe'><abbr title='" . epoch_to_time($returned_safe, [true, true]) . "'>" . epoch_to_time($returned_safe,[true,false]) . "</abbr></td></tr>");
             }
 
             ?>

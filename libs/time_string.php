@@ -6,20 +6,23 @@
  * Time: 14:45
  */
 
-function epoch_to_time($epoch, $milli=true, $detailed=false, $future = false) {
+
+/**
+ * Convert epoch to readable time
+ * @param int $epoch Epoch Time To Convert
+ * @param array $settings [Milliseconds, Detailed]
+ * @return false|string Result Text
+ */
+function epoch_to_time($epoch, $settings = [true, false]) {
     if ($epoch == "") {
         return "";
     }
-    if (!$detailed) {
-        if ($future) {
-            return time_difference_string($epoch, $milli);
-        } else {
-            return time_difference_string($epoch, $milli);
-        }
-    }
+    if (sizeof($settings) < 2) {return false;}
+
+    if (!$settings[1]) {return time_difference_string($epoch, $settings[0]);}
 
     try {
-        if ($milli) {
+        if ($settings[0]) {
             $epoch = $epoch / 1000;
         }
 
@@ -30,7 +33,13 @@ function epoch_to_time($epoch, $milli=true, $detailed=false, $future = false) {
     }
 }
 
-function time_difference_string($datetime, $milli = true,$full = false) {
+/**
+ * Time to time difference string
+ * @param int $datetime Epoch Time to use
+ * @param bool $milli Has milliseconds
+ * @return string Time Difference Specified as till/ago
+ */
+function time_difference_string($datetime, $milli = true) {
     if ($milli) {
         $datetime = $datetime / 1000;
     }
@@ -64,7 +73,7 @@ function time_difference_string($datetime, $milli = true,$full = false) {
         }
     }
 
-    if (!$full) $string = array_slice($string, 0, 1);
+    $string = array_slice($string, 0, 1);
     if ($future) {
         return $string ? "in " . implode(', ', $string) : 'just now';
     } else {
