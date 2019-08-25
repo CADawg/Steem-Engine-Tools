@@ -10,19 +10,20 @@
 /**
  * Convert epoch to readable time
  * @param int $epoch Epoch Time To Convert
- * @param array $settings [Milliseconds, Detailed]
+ * @param bool $milli Millisecond precision
+ * @param bool $detailed Show full time
  * @return false|string Result Text
  */
-function epoch_to_time($epoch, $settings = [true, false]) {
+
+function epoch_to_time($epoch, $milli = true, $detailed = false) {
     if ($epoch == "") {
         return "";
     }
-    if (sizeof($settings) < 2) {return false;}
 
-    if (!$settings[1]) {return time_difference_string($epoch, $settings[0]);}
+    if (!$detailed) {return time_difference_string($epoch, $milli);}
 
     try {
-        if ($settings[0]) {
+        if ($milli) {
             $epoch = $epoch / 1000;
         }
 

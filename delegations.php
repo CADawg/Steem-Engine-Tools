@@ -117,7 +117,7 @@ $loki = '$loki';
                     }
 
                     $token_delegators[$delegation->from . "," . $delegation->symbol . "," . $delegation->$loki] = [(float)$delegation->quantity, $delegation->symbol, $delegation->to];
-                    print("<tr><td>$delegation->from</td><td>$delegation->to</td><td>" . (float)$delegation->quantity . "</td><td>$delegation->symbol</td><td data-order='$created_safe'><abbr title='" . epoch_to_time($created_safe, [true, true]) . "'>" . epoch_to_time($created_safe) . "</abbr></td><td data-order='$updated_safe'><abbr title='" . epoch_to_time($updated_safe, [true, true]) . "'>$updated</abbr></td><td>" . (string)round(((float)$delegation->quantity/(float)$total)*100,2) . "%</td></tr>");
+                    print("<tr><td>$delegation->from</td><td>$delegation->to</td><td>" . (float)$delegation->quantity . "</td><td>$delegation->symbol</td><td data-order='$created_safe'><abbr title='" . epoch_to_time($created_safe, true, true) . "'>" . epoch_to_time($created_safe) . "</abbr></td><td data-order='$updated_safe'><abbr title='" . epoch_to_time($updated_safe, true, true) . "'>$updated</abbr></td><td>" . (string)round(((float)$delegation->quantity/(float)$total)*100,2) . "%</td></tr>");
                 }
 
                 ?>
