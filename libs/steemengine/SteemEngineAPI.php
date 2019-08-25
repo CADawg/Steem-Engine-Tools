@@ -27,9 +27,10 @@ class SteemEngineAPI
      * @return bool|object
      */
 
-    function query_contract($location = ["tokens", "balances"], $query = [], $modifiers = [1000, 0]) {
+    function query_contract($location = "tokens/balances", $query = []) {
         try {
-            if (sizeof($modifiers) < 2 or sizeof($location) < 2) {
+            $location = explode("/", $location);
+            if (sizeof($location) < 2) {
                 return false;
             }
 
@@ -43,7 +44,7 @@ class SteemEngineAPI
                 CURLOPT_TIMEOUT => 30,
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => json_encode([["method" => "find", "jsonrpc" => "2.0", "params" => ["contract" =>  $location[0], "table" =>  $location[1], "query" => $query, "limit" => $modifiers[0], "offset " => $modifiers[1], "indexes" => []],  "id" => 1]]),
+                CURLOPT_POSTFIELDS => json_encode([["method" => "find", "jsonrpc" => "2.0", "params" => ["contract" =>  $location[0], "table" =>  $location[1], "query" => $query, "limit" => 1000, "offset " => 0, "indexes" => []],  "id" => 1]]),
                 CURLOPT_HTTPHEADER => array(
                     "Cache-Control: no-cache",
                     "Content-Type: application/json",

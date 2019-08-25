@@ -28,7 +28,7 @@ class SteemEngine
      * @return bool|object Result
      */
     function get_user_balances($user = "null") {
-        return $this->SteemEngineAPI->query_contract(["tokens", "balances"], [ "account" => $user ]);
+        return $this->SteemEngineAPI->query_contract("tokens/balances", [ "account" => $user ]);
     }
 
     /**
@@ -44,7 +44,7 @@ class SteemEngine
             $query["token"] = strtoupper($token);
         }
 
-        return $this->SteemEngineAPI->query_contract(["market", "sellBook"], $query);
+        return $this->SteemEngineAPI->query_contract("market/sellBook", $query);
     }
 
     /**
@@ -60,7 +60,7 @@ class SteemEngine
             $query["token"] = strtoupper($token);
         }
 
-        return $this->SteemEngineAPI->query_contract(["market", "buyBook"], $query);
+        return $this->SteemEngineAPI->query_contract("market/buyBook", $query);
     }
 
     /**
@@ -68,7 +68,7 @@ class SteemEngine
      * @return bool|object Tokens in existence
      */
     function get_tokens() {
-        return $this->SteemEngineAPI->query_contract(["tokens", "tokens"], []);
+        return $this->SteemEngineAPI->query_contract("tokens/tokens", []);
     }
 
 

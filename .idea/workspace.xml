@@ -4,13 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/user/index.php" line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46264b67-9f1c-484c-a22b-775011c87a2a" name="Default" comment="Remove unnecessary function parameters">
+    <list default="true" id="46264b67-9f1c-484c-a22b-775011c87a2a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/delegations.php" afterPath="$PROJECT_DIR$/delegations.php" />
       <change beforePath="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" afterPath="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
       <change beforePath="$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php" afterPath="$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php" />
-      <change beforePath="$PROJECT_DIR$/libs/time_string.php" afterPath="$PROJECT_DIR$/libs/time_string.php" />
-      <change beforePath="$PROJECT_DIR$/undelegations.php" afterPath="$PROJECT_DIR$/undelegations.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,11 +63,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SteemEngine.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+              <folding>
+                <element signature="e#6#95#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SteemEngineAPI.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="399">
+              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="36" />
               <folding>
                 <element signature="e#6#95#0#PHP" expanded="true" />
               </folding>
@@ -98,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="markets.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="markets.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/markets.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+            <state relative-caret-position="510">
+              <caret line="113" column="69" lean-forward="true" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -111,7 +120,7 @@
       <file leaf-file-name="delegation_api.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/delegation_api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="102">
               <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
@@ -181,11 +190,11 @@
         <option value="$PROJECT_DIR$/SnaddyvitchDispenser/SteemEngine/SteemEngine.php" />
         <option value="$PROJECT_DIR$/user/index.php" />
         <option value="$PROJECT_DIR$/navagation.php" />
-        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php" />
-        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
         <option value="$PROJECT_DIR$/libs/time_string.php" />
         <option value="$PROJECT_DIR$/delegations.php" />
         <option value="$PROJECT_DIR$/undelegations.php" />
+        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php" />
+        <option value="$PROJECT_DIR$/libs/steemengine/SteemEngine.php" />
       </list>
     </option>
   </component>
@@ -331,7 +340,7 @@
       <workItem from="1566569882484" duration="3503000" />
       <workItem from="1566573494981" duration="7276000" />
       <workItem from="1566646657020" duration="22224000" />
-      <workItem from="1566728597933" duration="1999000" />
+      <workItem from="1566728597933" duration="2334000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor Time_string to solve #1">
       <created>1566729130951</created>
@@ -340,14 +349,22 @@
       <option name="project" value="LOCAL" />
       <updated>1566729130951</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Remove unnecessary function parameters">
+      <created>1566730609424</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566730609424</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140939000" />
+    <option name="totallyTimeSpent" value="141274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -656,14 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/delegation_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/temp/242 Now playing.URL">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -678,26 +687,6 @@
           <folding>
             <marker date="1566683412816" expanded="true" signature="7588:7593" ph="..." />
             <marker date="1566683412816" expanded="true" signature="7588:7614" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="58" column="33" lean-forward="true" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-          <folding>
-            <element signature="e#6#95#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -734,10 +723,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/market_api.php">
+    <entry file="file://$PROJECT_DIR$/markets.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="57" />
+        <state relative-caret-position="510">
+          <caret line="113" column="69" lean-forward="true" selection-start-line="113" selection-start-column="69" selection-end-line="113" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delegation_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -750,11 +747,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/markets.php">
+    <entry file="file://$PROJECT_DIR$/market_api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+        <state relative-caret-position="17">
+          <caret line="2" column="57" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngineAPI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/steemengine/SteemEngine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="28" column="7" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+          <folding>
+            <element signature="e#6#95#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
